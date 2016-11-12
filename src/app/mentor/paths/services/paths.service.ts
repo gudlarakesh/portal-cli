@@ -19,8 +19,8 @@ export class PathsService {
   }
 
   addPath(path: Path) :Observable<any> {
-    let url: string = `${this.config.dev.apiUrl}/organization_curriculum/paths`;
-    let body = {data:{attributes: path}};
+    let url: string = `${this.config.dev.apiUrl}/cohort_curriculum/cohorts/${path.cohortId}/paths`;
+    let body = {data:{attributes: {title: path.title, cohort_id: path.cohortId}}};
     let bodyString = JSON.stringify(body); // Stringify payload
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
@@ -42,7 +42,8 @@ export class PathsService {
   }
 
   updatePath(path: Path) :Observable<any> {
-    let editPathUrl: string = `${this.config.dev.apiUrl}/organization_curriculum/paths/${path.id}`;
+    debugger;
+    let editPathUrl: string = `${this.config.dev.apiUrl}/cohort_curriculum/cohorts/${path.cohortId}/paths/${path.id}`;
     let body = {data:{attributes: path}};
     let bodyString = JSON.stringify(body); // Stringify payload
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
@@ -68,8 +69,8 @@ export class PathsService {
     });
   }
 
-  loadPaths() :Observable<any> {
-    let url: string =  `${this.config.dev.apiUrl}/organization_curriculum/courses`;
+  loadPaths(id: number) :Observable<any> {
+    let url: string =  `${this.config.dev.apiUrl}/cohort_curriculum/cohorts/${id}/paths`;
 
     return this.authHttp.get(url)
     .map((res: Response) => {
@@ -85,11 +86,11 @@ export class PathsService {
     });
   }
 
-  deletePath(id: number) :Observable<any> {
-    let url: string =  `${this.config.dev.apiUrl}/organization_curriculum/paths/${id}`;
+  deletePath(path: Path) :Observable<any> {
+    let url: string =  `${this.config.dev.apiUrl}/cohort_curriculum/cohorts/${path.cohortId}/paths/${path.id}`;
     return this.authHttp.delete(url)
     .map((res: Response) => {
-      this._paths.next(this._paths.getValue().filter(chap => chap.id !== id));
+      this._paths.next(this._paths.getValue().filter(chap => chap.id !== path.id));
       return true;
     })
     .catch((error:any) => {
@@ -98,8 +99,8 @@ export class PathsService {
     });
   }
 
-  loadPathDetail(id:number):Observable<any> {
-    let url: string =  `${this.config.dev.apiUrl}/organization_curriculum/paths/${id}`;
+  loadPathDetail(path: Path):Observable<any> {
+    let url: string =  `${this.config.dev.apiUrl}/cohort_curriculum/cohorts/${path.cohortId}/paths/${path.id}`;
     return this.authHttp.get(url)
     .map((res: Response) => {
       let rsp = res.json().data;

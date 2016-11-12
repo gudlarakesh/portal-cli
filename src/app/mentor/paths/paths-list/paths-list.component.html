@@ -3,21 +3,17 @@
   <div class="row">
     <ca-togglable-form [formFor]="formName" (onSubmit)="addPath($event)"></ca-togglable-form>
   </div>
-  <div class="row">
-    <div class="col-sm-6 col-md-4" *ngFor="let path of (pathsService.pathsObs | async)">
-    <div class='card-container'>
-      <md-card>
-       <md-card-title>{{path.title}}</md-card-title>   
-       <md-card-content>
-        <p>{{path.desc}}</p>
-        </md-card-content>
-        <md-card-actions>
-          <button md-raised-button color="primary" (click)="showPathDetail()">Open</button>
-          <button md-raised-button color="warn" (click)="deletePath(path.id)">Delete</button>
-         </md-card-actions>
-      </md-card>
+  <div class="row" *ngIf="pathDetails">
+    <div class="col-sm-6 col-md-4">
+      <div class='card-container'>
+        <md-card>
+         <md-card-title id="{{pathDetails.id}}" contenteditable="true" ngDefaultControl [(ngModel)]="updatedPathName" name="title" (keypress)="updatePathName($event.keyCode,pathDetails.id)">{{pathDetails.title}}</md-card-title>
+         <md-card-actions>
+            <button md-raised-button color="primary" (click)="showPathDetail()">Open</button>
+            <button md-raised-button color="warn" (click)="deletePath(path)">Delete</button>
+          </md-card-actions>
+        </md-card>
       </div>
     </div>
   </div>
 </div>
-

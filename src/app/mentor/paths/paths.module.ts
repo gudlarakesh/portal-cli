@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -8,10 +8,18 @@ import { PathsListComponent } from './paths-list/index';
 import { pathsRoutes } from './paths.routes';
 
 @NgModule({
-    imports: [CommonModule, SharedModule, RouterModule.forChild(pathsRoutes)],
+    imports: [CommonModule, SharedModule],
     declarations: [PathsListComponent],
     exports: [ PathsListComponent],
     providers:[PathsService]
 })
 
-export default class PathsModule { }
+export class PathsModule {}
+
+export default class PathModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: PathsModule
+    }
+  }
+ }

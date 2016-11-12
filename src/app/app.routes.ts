@@ -19,13 +19,6 @@ const courseRoutes: Routes = [
 }
 ];
 
-const pathsRoutes: Routes = [
-{
-  path: 'paths',
-  loadChildren: 'app/mentor/paths/paths.module'
-}
-];
-
 const adminRoutes: Routes = [
 {
   path: 'admin',
@@ -44,7 +37,6 @@ export const routes: Routes = [
   ...HomeRoutes,
   ...studentsRoutes,
   ...courseRoutes,
-  ...pathsRoutes,
   ...adminRoutes,
   ...AuthenticateRoutes,
   ...cohortRoutes
