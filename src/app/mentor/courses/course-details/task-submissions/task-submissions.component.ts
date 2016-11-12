@@ -1,5 +1,5 @@
 import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
-import { Question } from '../../models/question';
+import { Question } from '../../../../shared/models/question';
 import { SubmissionsService } from '../../services/submissions.service';
 
 @Component ({
