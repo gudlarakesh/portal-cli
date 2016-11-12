@@ -5,7 +5,7 @@ export const CONFIG = {
 
 if (environment.production) {
 CONFIG.dev = {
-  apiUrl: 'https://ca-portal.herokuapp.com/v1-beta'
+  apiUrl: 'https://vast-plains-35324.herokuapp.com/v1-beta'
     };
 } else {
   CONFIG.dev = {
