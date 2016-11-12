@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { CoursesListComponent } from './index';
+import { CoursesListComponent } from './courses-list.component';
 
 import { RoleGuard } from '../../shared/index';
 import { AuthGuard } from '../../shared/index';

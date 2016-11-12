@@ -5,7 +5,7 @@ import { UsersService } from '../index';
 @Component({
   selector: 'ca-users-list',
   templateUrl: 'users-list.component.html',
-  styleUrls: ['users-list.component.css']
+  styleUrls: ['users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
 

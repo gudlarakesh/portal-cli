@@ -9,7 +9,7 @@ import { Path } from '../models/index';
 @Component({
   selector: 'ca-paths-list',
   templateUrl: 'paths-list.component.html',
-  styleUrls: ['paths-list.component.css']
+  styleUrls: ['paths-list.component.scss']
 })
 
 export class PathsListComponent implements OnInit {

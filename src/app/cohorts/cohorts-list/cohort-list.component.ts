@@ -10,7 +10,7 @@ import { CohortListService } from '../services/index';
 @Component({
   selector: 'ca-cohort-list',
   templateUrl: 'cohort-list.component.html',
-  styleUrls: ['cohort-list.component.css']
+  styleUrls: ['cohort-list.component.scss']
 })
 
 export class CohortListComponent implements OnInit {

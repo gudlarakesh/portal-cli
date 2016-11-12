@@ -9,11 +9,14 @@ import { MomentModule } from 'angular2-moment';
 
 import { coursesRoutes } from './courses.routes';
 
-import { SectionsListComponent, TaskDetailComponent,TaskFormComponent,
-   TasksListComponent, TaskSubmissionsComponent,
-   TaskSubmissionComponent, CourseDetailsService,
+import { CourseDetailsService,
    CoursesService,
-   SubmissionsService, SectionFormComponent, SectionComponent } from './index';
+   SubmissionsService } from './services/index';
+
+import { SectionsListComponent, SectionComponent, SectionFormComponent} from './course-details/sections-list/index';
+import { TaskDetailComponent } from './course-details/task-detail/index';
+import { TaskSubmissionsComponent, TaskSubmissionComponent } from './course-details/task-submissions/index';
+import { TasksListComponent, TaskFormComponent } from './course-details/tasks-list/index';
 
 import { CoursesListComponent } from './courses-list/index';
 

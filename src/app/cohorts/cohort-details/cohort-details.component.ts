@@ -8,7 +8,7 @@ import { CohortRolesService } from '../services/cohort-roles.service';
 @Component ({
   selector: 'ca-cohort-detail',
   templateUrl: 'cohort-details.component.html',
-  styleUrls: ['cohort-details.component.css']
+  styleUrls: ['cohort-details.component.scss']
 })
 
 export class CohortDetailsComponent implements OnInit {

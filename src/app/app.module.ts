@@ -17,7 +17,7 @@ import { LoginModule } from './login/login.module';
             SharedModule.forRoot(), SimpleNotificationsModule],
   declarations: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF,useValue: '<%= APP_BASE %>'},{ provide: 'config',useValue: CONFIG}],
+    { provide: APP_BASE_HREF,useValue: CONFIG.prod.baseUrl},{ provide: 'config',useValue: CONFIG}],
   bootstrap: [AppComponent]
 })
 

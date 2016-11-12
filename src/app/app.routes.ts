@@ -15,28 +15,28 @@ const studentsRoutes: Routes = [
 const courseRoutes: Routes = [
 {
   path: 'courses',
-  loadChildren: '/app/courses/courses.module'
+  loadChildren: 'app/courses/courses.module'
 }
 ];
 
 const pathsRoutes: Routes = [
 {
   path: 'paths',
-  loadChildren: '/app/paths/paths.module'
+  loadChildren: 'app/paths/paths.module'
 }
 ];
 
 const adminRoutes: Routes = [
 {
   path: 'admin',
-  loadChildren: '/app/admin/admin.module'
+  loadChildren: 'app/admin/admin.module'
 }
 ];
 
 const cohortRoutes: Routes = [
 {
   path: 'cohorts',
-  loadChildren: '/app/cohorts/cohorts.module'
+  loadChildren: 'app/cohorts/cohorts.module'
 }
 ];
 
