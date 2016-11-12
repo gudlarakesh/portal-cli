@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl: '/ng-cli-demo',
+  baseUrl: '/portal-cli',
   apiUrl: 'https://'
 };
