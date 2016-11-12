@@ -5,7 +5,7 @@ export const CONFIG = {
 
 if (environment.production) {
 CONFIG.dev = {
-  apiUrl: 'https://localhost:3000'
+  apiUrl: 'https://ca-portal.herokuapp.com/v1-beta'
     };
 } else {
   CONFIG.dev = {
