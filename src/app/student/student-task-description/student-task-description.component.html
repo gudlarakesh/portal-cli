@@ -1,0 +1,26 @@
+<div class="col-md-12">
+  <md-card>
+    <md-tab-group>
+      <md-tab>
+        <template md-tab-label>Task Description</template>
+        <template md-tab-content>
+          <md-card>
+           <md-card-content>
+              <h2>{{task.attributes.title}}</h2>
+              <p>{{task.attributes.description}}</p>
+           </md-card-content>
+           <md-card-content>
+            <ca-task-questions [canAddQuestion]="canAddQuestion"
+            [questions]="taskService.questionObs | async"
+            (saveQuestion)=submitResponse($event)>
+            </ca-task-questions>
+           </md-card-content>           
+          </md-card>
+        </template>
+      </md-tab>
+    </md-tab-group>
+    <div>
+      <button md-raised-button color="primary" [disabled]="!allAnswersSubmitted" *ngIf="task.status == 'rejected' || !task.submissionId" (click)="markComplete()">Submit For Review</button>
+    </div>
+  </md-card>
+</div>

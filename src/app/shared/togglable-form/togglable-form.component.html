@@ -1,0 +1,13 @@
+<div class='toggle-form'>
+  <div class="action-button">
+    <button md-mini-fab (click)="actOnButtonClick()">
+        <md-icon class="md-24">add</md-icon>
+    </button>
+    <div class="form-content">
+      <form (ngSubmit)="onFormSubmit()">
+        <md-input class="demo-full-width" [(ngModel)]="name" name="name" placeholder="{{formFor}} Title">
+        </md-input>
+      </form>
+    </div>
+  </div>
+</div>

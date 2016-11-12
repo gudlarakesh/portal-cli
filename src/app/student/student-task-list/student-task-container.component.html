@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <md-tab-group [selectedIndex]="selectedTabIndex" (selectChange)="tabChanged($event)">
+        <md-tab>
+          <template md-tab-label>Pending</template>
+          <template md-tab-content>
+            <ca-student-task-list [taskList]="pendingTasks" (onTaskSelect)="taskSelected($event)">
+            </ca-student-task-list>
+          </template>
+        </md-tab>
+        <md-tab>
+          <template md-tab-label>Completed</template>
+          <template md-tab-content>
+            <ca-student-task-list [taskList]="completedTasks" (onTaskSelect)="taskSelected($event)">
+            </ca-student-task-list>
+          </template>
+        </md-tab>
+        <md-tab>
+          <template md-tab-label>Under Review</template>
+          <template md-tab-content>
+            <ca-student-task-list [taskList]="underReviewTasks" (onTaskSelect)="taskSelected($event)">
+            </ca-student-task-list>
+          </template>
+        </md-tab>
+        <md-tab>
+          <template md-tab-label>Need Resubmission</template>
+          <template md-tab-content>
+            <ca-student-task-list [taskList]="rejectedTasks" (onTaskSelect)="taskSelected($event)">
+            </ca-student-task-list>
+          </template>
+        </md-tab>
+      </md-tab-group>
+    </div>
+    <div class="col-md-8 task-description">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container contact-admin" *ngIf="(currentUser.roles.length === 0)">
+  <div class="row">
+    <p>Thank you for Signing Up</p>
+    <p>We only expect DEDICATION and DISCIPLINE through out the bootcamp.</p>
+    <p>Please contact Mentor to get yourself added to the cohort you belong to.</p>
+  </div>
+</div>
+<div class="container" *ngIf="(currentUser.roles.length != 0)">
+  <div class="row">
+    <div class="col-md-4">
+      <md-card [routerLink]="['courses']">
+         <md-card-title>Course Management</md-card-title>
+         <md-card-subtitle>Subtitle first</md-card-subtitle>
+         <md-card-content>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+         </md-card-content>
+      </md-card>
+     </div>
+    <div class="col-md-4">
+      <md-card [routerLink]="['paths']">
+         <md-card-title>Path Management</md-card-title>
+         <md-card-subtitle>Subtitle first</md-card-subtitle>
+         <md-card-content>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+         </md-card-content>
+      </md-card>
+    </div>    
+    <div class="col-md-4">
+      <md-card [routerLink]="['cohorts']">
+         <md-card-title>Cohort Management</md-card-title>
+         <md-card-subtitle>Subtitle first</md-card-subtitle>
+         <md-card-content>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+         </md-card-content>
+      </md-card>
+    </div>    
+  </div>
+</div>

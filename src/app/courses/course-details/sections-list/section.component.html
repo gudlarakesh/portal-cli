@@ -1,0 +1,6 @@
+<md-card *ngIf="!isEditableSection" [routerLink]="[section.id, 'tasks']" [routerLinkActive]="['activeLink']">
+<i class="material-icons section-delete pull-right" (click)= "deleteSection(section)">delete</i>
+<i class="material-icons section-edit pull-right" (click)= "isEditableSection=!isEditableSection">mode_edit</i>
+<md-card-title>{{section.title}}</md-card-title>
+</md-card>
+<ca-section-form *ngIf="isEditableSection" [section]="section" (showForm)="isEditableSection=!isEditableSection" (saveSection)="updateSection($event)"></ca-section-form>

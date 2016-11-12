@@ -1,0 +1,24 @@
+//  edit and delete buttons on sections-list
+#sections-list {
+  .section-edit {
+    font-size: 1.2em;
+    color: #3498db;
+    visibility: hidden;
+  }
+  .section-delete {
+    font-size: 1.2em;
+    color: #e74c3c;
+    visibility: hidden;
+  }
+  md-card:hover {
+    .section-edit,.section-delete {
+      visibility: visible;
+    }
+  }
+  .section-form-clear {
+    color: #e74c3c;
+  }
+  .submit-button{
+    height: 40px;
+  }
+}

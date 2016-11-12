@@ -1,0 +1,9 @@
+<md-card>
+  <i class="material-icons section-form-clear pull-right" (click)="clearForm()">clear</i>
+  <form role="sectionForm" #addSectionForm="ngForm" (ngSubmit)="submitSection()" novalidate>
+    <md-input required placeholder="Title" name="title" style="width: 100%" [(ngModel)]="sectionClone.title"></md-input>
+    <div class="submit-button">
+      <button md-mini-fab type="submit" class="section-form-submit pull-right" [disabled]="!addSectionForm.valid" color="primary"><md-icon>check</md-icon></button>
+    </div>
+  </form>
+</md-card>

@@ -1,33 +1,58 @@
-/* tslint:disable:no-unused-variable */
+import { Component } from '@angular/core';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import { TestComponentBuilder } from '@angular/core/testing';
 
-import { TestBed, async } from '@angular/core/testing';
+import {
+  addProviders,
+  async,
+  inject
+} from '@angular/core/testing';
+import {
+  RouterConfig
+} from '@angular/router';
+
+import {provideFakeRouter} from '../testing/router/router-testing-providers';
+
 import { AppComponent } from './app.component';
+import { HomeComponent } from './+home/home.component';
+import { AboutComponent } from './+about/about.component';
 
-describe('App: NgCliDemo', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+export function main() {
+
+  describe('App component', () => {
+    // Disable old forms
+    let providerArr: any[];
+
+    beforeEach(() => {
+      providerArr = [disableDeprecatedForms(), provideForms()];
+
+      // Support for testing component that uses Router
+      let config: RouterConfig = [
+        { path: '', component: HomeComponent },
+        { path: 'about', component: AboutComponent }
+      ];
+
+      addProviders([
+        provideFakeRouter(TestComponent, config)
+      ]);
     });
+
+    it('should build without a problem',
+      async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        tcb.overrideProviders(TestComponent, providerArr)
+          .createAsync(TestComponent)
+          .then((fixture) => {
+            expect(fixture.nativeElement.innerText.indexOf('HOME')).toBeTruthy();
+          });
+      })));
   });
+}
 
-  it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+@Component({
+  selector: 'test-cmp',
+  template: '<sd-app></sd-app>',
+  directives: [AppComponent]
+})
 
-  it(`should have as title 'app works!'`, async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
-  }));
-});
+class TestComponent {
+}

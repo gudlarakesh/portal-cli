@@ -1,0 +1,42 @@
+<div class="col-md-6" id="task-detail">
+  <md-card id="task-detail-card">
+    <md-tab-group>
+      <md-tab>
+        <template md-tab-label>Task</template>
+        <template md-tab-content  *ngFor="let t of task">
+          <md-card *ngIf="!isEditableTask">
+            <i class="material-icons task-delete pull-right" (click)= "deleteTask(t)">delete</i>
+            <i class="material-icons task-edit pull-right" (click)= "isEditableTask=!isEditableTask">mode_edit</i>
+             <md-card-title>{{t.title}}</md-card-title>
+             <md-card-subtitle>
+               {{t.published? 'This Task is published' : 'This Task is not yet published'}}
+             </md-card-subtitle>
+             <md-card-content>
+                <p>{{t.description}}</p>
+             </md-card-content>
+          </md-card>
+          <ca-task-form *ngIf="isEditableTask" [task]="task[0]" (showForm)="isEditableTask=!isEditableTask"
+          (saveTask)="updateTask($event)"></ca-task-form>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>Questions</template>
+        <template md-tab-content>
+            <ca-task-questions
+             [questions]="courseDetailsService.questionsObs | async"
+             [canAddQuestion]="canAddQuestion"
+             (saveQuestion)="saveQuestion($event)"
+             [showQstEditor]="showQstEditor"
+             (deleteQuestion)="deleteQuestion($event)">
+            </ca-task-questions>
+        </template>
+      </md-tab>
+      <md-tab>
+        <template md-tab-label>Submissions</template>
+        <template md-tab-content>
+          <ca-task-submissions [taskId]="taskId"></ca-task-submissions>
+        </template>
+      </md-tab>
+    </md-tab-group>
+  </md-card>
+</div>

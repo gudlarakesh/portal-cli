@@ -1,0 +1,10 @@
+<div>
+  <tag-input class="tags small-tag-button" [ngModel]="tags"
+    [onlyFromAutocomplete]="onlyFromAutocomplete || false"
+    [autocompleteItems]="tagsList"
+    [autocomplete]="true"
+    [readonly]="readOnly"
+    (onRemove)="onItemRemoved($event)"
+    (onAdd)="onItemAdded($event)" >
+  </tag-input>
+</div>

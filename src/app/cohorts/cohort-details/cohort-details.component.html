@@ -1,0 +1,24 @@
+<md-tab-group>
+  <md-tab>
+    <template md-tab-label>Mentor Section</template>
+    <template md-tab-content>
+      <div class="mentor-section">
+        <div *ngFor="let role of roles">
+          <h3>{{role.label}}</h3>
+          <ca-tag-it [tags]="allCohortManagersArray" [tagsList]="allUsersWithRoles" (onAdd)="addUserToRole($event)" (onRemove)="removeUserFromRole($event)" [readOnly]="false" [onlyFromAutoComplete]="true"></ca-tag-it>
+        </div>
+      </div>
+    </template>
+  </md-tab>
+  <md-tab>
+    <template md-tab-label>Student Section</template>
+    <template md-tab-content>
+      <div class="student-section">
+        <div>
+          <h3>Cohort Members</h3>
+          <ca-tag-it [tags]="allCohortMembersArray" [tagsList]="allUsersWithOutRoles" (onAdd)="addMemberToRole($event)" (onRemove)="removeMemberFromRole($event)" [readOnly]="false" [onlyFromAutoComplete]="true"></ca-tag-it>
+        </div>
+      </div>
+    </template>
+  </md-tab>
+</md-tab-group>

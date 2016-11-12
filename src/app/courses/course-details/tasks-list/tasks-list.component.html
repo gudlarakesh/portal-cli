@@ -1,0 +1,13 @@
+  <div class="col-md-3">
+    <button color="primary" md-mini-fab *ngIf='!showNewInput' (click)='showNewForm()'>
+      <md-icon class="md-18">add</md-icon>
+    </button>
+    <ca-task-form *ngIf="showNewInput" [task]="task" (showForm)="showNewInput=!showNewInput"
+    (saveTask)="addTask($event)"></ca-task-form>
+    <div class="courses-list-group" *ngFor="let task of (courseDetailsService.tasksObs | async);trackBy:task?.id">
+      <md-card [routerLink]="[task.id]" [routerLinkActive]="['activeLink']">
+        <md-card-title>{{task.title}}</md-card-title>
+      </md-card>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

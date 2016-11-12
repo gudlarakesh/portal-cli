@@ -1,0 +1,10 @@
+<div>
+  <div *ngIf="isEditMode">
+    <ng-content select="ca-editable-form-content"></ng-content>
+  </div>
+  <div *ngIf="!isEditMode" (click)="isEditMode=true">
+    <ng-content select="ca-editable-form-read-only"></ng-content>
+  </div>
+  <button md-raised-button color="primary" *ngIf="!isEditMode" (click)="isEditMode=true">Edit</button>
+  <button md-raised-button color="primary" *ngIf="isEditMode" (click)="onUpdateClick()">Update</button>
+</div>

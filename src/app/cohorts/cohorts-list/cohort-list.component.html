@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <ca-togglable-form [formFor]="formName" (onSubmit)="addNewCohort($event)"></ca-togglable-form>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let cohort of (cohortlistservice.cohortsObs | async)">
+      <div class="card-container">
+        <md-card class="card">
+          <div md-raised color="warn" class="trash pull-right" (click)="deleteCohort(cohort.id)">
+            <i class="material-icons">delete</i>
+          </div>
+          <md-card-subtitle>2016 Batch</md-card-subtitle>
+          <md-card-title id="{{cohort.id}}" contenteditable="true" ngDefaultControl [(ngModel)]="updatedCohortName" name="title" (keypress)="updateCohort($event.keyCode,cohort.id)">{{cohort.title}}</md-card-title>   
+          <md-card-content>
+            <p>This course is a very practical way to learn web development JavaScript</p>
+          </md-card-content>
+          <md-card-actions>
+          <button md-raised-button color="primary" (click)="showCohortDetail(cohort.id)">Manage</button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</div>

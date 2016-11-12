@@ -1,0 +1,40 @@
+<md-progress-bar mode="indeterminate" *ngIf="!course"></md-progress-bar>
+<div class="container-fluid">
+    <div class="row" *ngIf="course">
+      <ca-editable-form (onUpdate)="updateCourse()">
+        <ca-editable-form-content>
+         <form>
+          <table style="width: 100%" cellspacing="0">
+            <tr>
+              <td>
+                <md-input placeholder="Course Title" maxlength="50" style="width: 100%" [(ngModel)]="course.title" name="title" #courseTitle></md-input>
+              </td>
+            </tr>
+          </table>
+        </form>
+    </ca-editable-form-content>
+    <ca-editable-form-read-only>
+      <md-card>
+        <md-card-subtitle>{{course.level}}</md-card-subtitle>
+        <md-card-title>{{course.title}}</md-card-title>   
+        <md-card-content>
+          <p>{{course.desc}}</p>
+        </md-card-content>
+      </md-card>
+    </ca-editable-form-read-only>
+  </ca-editable-form>
+    </div>
+    <div class="row" id="sections-list">
+      <div class="col-md-3">
+          <button color="primary" md-mini-fab *ngIf='!showNewInput' (click)='showNewForm()'>
+            <md-icon class="md-18">add</md-icon>
+          </button>
+        <ca-section-form [hidden]="!showNewInput" [section]="section" (showForm)="showNewInput=!showNewInput"
+        (saveSection)="addSection($event)"></ca-section-form>
+        <div class="courses-list-group" *ngFor="let section of (courseDetailsService.sectionsObs | async);trackBy:section?.id">
+          <ca-section [courseId]="courseId" [section]="section"></ca-section>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+</div>

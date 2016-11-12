@@ -1,0 +1,17 @@
+<md-card>
+  <i class="material-icons question-form-clear pull-right" (click)="clearEditor()">clear</i>
+  <form role="questionForm" #addTaskForm="ngForm" (ngSubmit)="submitQuestion()" novalidate>
+    <md-input *ngIf="canAddQuestion" required placeholder="Question" name="text" style="width: 100%" [(ngModel)]="questionClone.text"></md-input>
+    <md-card-title *ngIf="!canAddQuestion" >{{question.text}}</md-card-title>
+    <p *ngIf="canAddQuestion">Answer Type:</p>
+    <md-radio-group *ngIf="canAddQuestion" [(ngModel)]="questionClone.answer_type" name="answer_type">
+      <md-radio-button value="string">String</md-radio-button>
+      <md-radio-button value="text">Text</md-radio-button>
+    </md-radio-group>
+    <md-input required placeholder="Answer" name="answer" style="width: 100%" [(ngModel)]="questionClone.answer"></md-input>
+    <md-input *ngIf="canAddQuestion" required placeholder="Solution" name="solution" style="width: 100%" [(ngModel)]="questionClone.solution"></md-input>
+    <div class="submit-button">
+      <button md-mini-fab type="submit" class="question-form-submit pull-right" [disabled]="!addTaskForm.valid" color="primary"><md-icon>check</md-icon></button>
+    </div>
+  </form>
+</md-card>

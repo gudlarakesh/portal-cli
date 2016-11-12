@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Welcome to my site</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input required type="email" #email="ngModel" class="form-control" id="email"
+                placeholder="hacker@codeastra.com" [(ngModel)]="user.email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input required type="password" minlength="6" #password="ngModel" class="form-control" id="password"
+                placeholder="Password" [(ngModel)]="user.password" name="password" >
+            </div>
+            <div class="form-group">
+              <label for="passwordConfirmation">Password Conifrmation</label>
+              <input required type="password" minlength="6" #passwordConfirmation="ngModel" class="form-control"
+                id="passwordConfirmation" placeholder="Confirm Password" [(ngModel)]="user.password_confirmation"
+                name="password_confirmation">
+            </div>
+            <button [disabled]="!signupForm.valid" type="submit" class="btn btn-default btn-primary">Submit</button>
+          </form>
+          <br>
+          <a [routerLink]="['/login']">Click here to Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

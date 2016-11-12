@@ -1,0 +1,18 @@
+<md-card *ngIf="!isEditableQuestion">
+  <i class="material-icons question-delete pull-right" *ngIf="canAddQuestion" (click)= "destroyQuestion(question)">delete</i>
+  <i class="material-icons question-edit pull-right" (click)= "isEditableQuestion=!isEditableQuestion">mode_edit</i>
+  <md-card-content><strong>{{question.text}}</strong></md-card-content>
+  <md-card-subtitle *ngIf="canAddQuestion"><strong>Answer Type:</strong> {{question.answer_type}}</md-card-subtitle>
+    <md-card-content>
+      <p><strong>Answer:</strong></p>
+      <p>{{question.answer}}</p>
+      <p *ngIf="canAddQuestion"><strong>Solution:</strong></p>
+      <p *ngIf="canAddQuestion">{{question.solution}}</p>
+    </md-card-content>
+</md-card>
+<ca-task-question-editor *ngIf="isEditableQuestion"
+  [canAddQuestion]="canAddQuestion"
+  [question]="question"
+  (showEditor)="isEditableQuestion=!isEditableQuestion"
+  (saveQuestion)="updateQuestion($event)"
+></ca-task-question-editor>

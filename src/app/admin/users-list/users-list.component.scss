@@ -1,0 +1,23 @@
+.user-roles-header {
+  text-align: center;
+  margin: 1em 0;
+}
+
+.user-roles-table {
+  border-top: 7px solid #9baff1;
+  border-bottom: 7px solid #9baff1;
+  border-collapse: collapse;
+  th, td  {
+    background: #e8edff;
+    border-right: 1px solid #9baff1;
+    border-left: 1px solid #9baff1;
+    color: #039;
+    padding: 8px;
+  }
+  th, td {
+    text-align: center;
+  }
+  .user-email {
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="task-container" *ngFor="let task of taskList | async">
+  <md-card (click)="cardClicked(task)" [caTaskStatusHighlighter]="task" class="bs-callout card-highlighter" id="taskList_{{task.id}}">
+      <md-card-title>
+        {{task.attributes.title}}
+      </md-card-title>
+    </md-card>
+</div>

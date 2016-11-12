@@ -1,0 +1,28 @@
+<md-progress-bar mode="indeterminate" *ngIf="!(coursesService.coursesObs | async)"></md-progress-bar>
+<div class="container">
+  <div class="row">
+    <ca-togglable-form [formFor]="formName" (onSubmit)="addCourse($event)"></ca-togglable-form>
+  </div>
+  <!-- <ca-date-picker [(ngModel)]="deadline" [expanded]="true" class="success pull-right"></ca-date-picker> -->
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let course of (coursesService.coursesObs | async)">
+    <div class='card-container'>
+      <md-card>
+      <md-card-subtitle>{{course.level}}</md-card-subtitle>
+       <md-card-title>{{course.title}}</md-card-title>
+       <md-card-content>
+        <p>{{course.desc}}</p>
+        </md-card-content>
+        <md-card-actions>
+          <button md-raised-button color="primary" (click)="showCourseDetail(course.id)">Open</button>
+          <button md-raised-button color="warn" (click)="deleteCourse(course.id)">Delete</button>
+         </md-card-actions>
+
+         <ca-tag-it [tags]="course.tag_names" [tagsList]="['HTML', 'CSS', 'Node', 'Angular']"
+          (onAdd)="addTag($event, course)" (onRemove)="removeTag($event, course)" [readOnly]="false"></ca-tag-it>
+      </md-card>
+      </div>
+    </div>
+  </div>
+
+</div>

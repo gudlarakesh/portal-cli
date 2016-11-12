@@ -1,0 +1,33 @@
+#task-detail {
+
+  #task-detail-card {
+    background-color: #FCD757;
+  }
+
+  .task-edit ,.question-edit{
+    font-size: 1.2em;
+    color: #3498db;
+    visibility: hidden;
+  }
+  .task-delete, .question-delete {
+    font-size: 1.2em;
+    color: #e74c3c;
+    visibility: hidden;
+  }
+  md-card:hover {
+    .task-edit,.task-delete {
+      visibility: visible;
+    }
+  }
+  ca-task-question:hover{
+    .question-edit,.question-delete {
+      visibility: visible;
+    }
+  }
+  .task-form-clear,.question-form-clear {
+    color: #e74c3c;
+  }
+  .submit-button{
+    height: 40px;
+  }
+}

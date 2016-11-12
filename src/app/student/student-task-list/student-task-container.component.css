@@ -1,0 +1,7 @@
+.task-description{
+  top:55px;
+}
+
+:host >>> md-tab-group .md-tab-header {
+  overflow: visible;
+}

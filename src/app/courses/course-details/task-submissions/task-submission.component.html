@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingTwo">
+    <h4 class="panel-title">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#collapse_' + submission.id" aria-expanded="false">
+        <h4>User Id: {{submission.user_id}} <span class="pull-right" [title]="submission.status_changed_on">{{submission.status_changed_on | amTimeAgo}}</span>
+        </h4>
+      </a>
+    </h4>
+  </div>
+  <div [id]="'collapse_' + submission.id" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="panel-body">
+      <p>Status: {{submission.status}}</p>
+      <p>Count: {{submission.submissions_count}}</p>
+      <div *ngFor="let question of submission.questions">
+        <div class="well">
+          <p>Question:</p>
+          <ca-markdown-viewer [mdText]="question.text"></ca-markdown-viewer>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <p>Given Answer: {{question.submitted_answer.text}}</p>
+            <p>Given Solution: {{question.submitted_answer.solution}}</p>
+          </div>
+          <div class="col-md-6">
+            <p>Actual Answer: {{question.answer}}</p>
+            <p>Actual Solution: {{question.solution}}</p>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <button class="pull-right btn btn-primary btn-default" (click)="approveSubmission()" *ngIf="submission.status === 'submitted' || submission.status === 'rejected'">Approve</button>
+      <button class="pull-right btn btn-danger btn-default" (click)="rejectSubmission()" *ngIf="submission.status === 'submitted' || submission.status === 'accepted'">Reject</button>
+    </div>
+    <!-- <ca-disqus [identifier]="submission.id" [shortname]="'srikanth-test-com.disqus.com'"></ca-disqus> -->
+  </div>
+
+</div>

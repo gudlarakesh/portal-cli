@@ -1,0 +1,20 @@
+<div *ngIf="canAddQuestion">
+  <button md-mini-fab color="primary" *ngIf="!isEditableQuestion"
+  (click)="isEditableQuestion=!isEditableQuestion">
+  <md-icon class="md-24">add</md-icon>
+  </button>
+  <ca-task-question-editor *ngIf="isEditableQuestion"
+  [question]="question"
+  [canAddQuestion]="canAddQuestion"
+  (showEditor)="isEditableQuestion=!isEditableQuestion"
+  (saveQuestion)="addQuestion($event)"
+  ></ca-task-question-editor>
+</div>
+<div class="courses-list-group" *ngFor="let question of questions" >
+  <ca-task-question
+   [question]="question"
+   [canAddQuestion]="canAddQuestion"
+   (saveQuestion)="addQuestion($event)"
+   (deleteQuestion)="destroyQuestion($event)"
+   ></ca-task-question>
+</div>

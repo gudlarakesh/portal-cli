@@ -1,0 +1,11 @@
+<md-progress-bar mode="indeterminate" *ngIf="!(submissionsService.submissionsObs | async)"></md-progress-bar>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <select [(ngModel)]="statusFilter" class="pull-right">
+    <option value="submitted">Submitted</option>
+    <option value="rejected">Rejected</option>
+    <option value="accepted">Accepted</option>
+  </select>
+  <br>
+  <ca-task-submission *ngFor="let submission of (submissionsService.submissionsObs | async | taskSubmissionsFilter:statusFilter)" [submission]="submission" [taskId]="taskId">
+  </ca-task-submission>
+</div>

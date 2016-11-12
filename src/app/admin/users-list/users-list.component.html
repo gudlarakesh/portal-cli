@@ -1,0 +1,20 @@
+<md-progress-bar mode="indeterminate" *ngIf="!(usersService.usersObs | async)"></md-progress-bar>
+<div class="container">
+  <h4 class="user-roles-header">Users List</h4>
+  <table class="user-roles-table table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th *ngFor="let role of allRoles">{{role}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of (usersService.usersObs | async);trackBy:user?.id">
+        <td class="user-email">{{user.email}}</td>
+        <td *ngFor="let role of allRoles">
+          <md-slide-toggle (change)="changeRole($event, user, role)" [checked]="user.roles.indexOf(role) > -1"></md-slide-toggle>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
