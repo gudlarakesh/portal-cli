@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 
 import { AuthHttpService } from '../../shared/services/index';
 import { Task, SubmittedTask } from '../models/index';
-import { Question } from '../../mentor/courses/models/question';
+import { Question } from '../../shared/models/question';
 
 @Injectable()
 export class StudentTaskService {
