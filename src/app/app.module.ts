@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import { HomeModule } from './+home/home.module';
+import { HomeModule } from './mentor/+home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 

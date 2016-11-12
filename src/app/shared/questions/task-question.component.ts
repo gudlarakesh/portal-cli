@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter,ViewEncapsulation } from '@angular/core';
 
-import { Question } from '../../courses/models/question';
+import { Question } from '../models/question';
 
 import { NotificationsService } from 'angular2-notifications';
 

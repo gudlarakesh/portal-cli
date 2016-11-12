@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
-import { Question } from '../../courses/index';
+import { Question } from '../models/question';
 
 
 @Component({

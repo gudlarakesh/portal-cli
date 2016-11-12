@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
 
-import { Question } from '../../courses/index';
+import { Question } from '../models/question';
 
 @Component({
   selector: 'ca-task-questions',
