@@ -11,13 +11,15 @@ import { HomeModule } from './+home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 
+import { environment } from '../environments/environment';
+
 @NgModule({
   imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes),
             HomeModule, LoginModule,
             SharedModule.forRoot(), SimpleNotificationsModule],
   declarations: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF,useValue: CONFIG.prod.baseUrl},{ provide: 'config',useValue: CONFIG}],
+    { provide: APP_BASE_HREF,useValue: environment.baseUrl},{ provide: 'config',useValue: CONFIG}],
   bootstrap: [AppComponent]
 })
 
