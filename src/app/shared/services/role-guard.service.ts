@@ -31,14 +31,13 @@ export class RoleGuard implements CanActivate {
     for(let routes of [adminRoutes, curriculumEditorRoutes]) {
       for (let route of routes.list) {
         if(state.url.startsWith(route)) {
-          return true;
-          // if(currentUser.roles.includes(routes.role)) {
-          //   return true;
-          // } else {
-          //   this.notificationService.alert('UnAuthorized Access', 'You are not authorized for this route.');
-          //   this.router.navigate([this.location.path()]);
-          //   return false;
-          // }
+          if(currentUser.roles.includes(routes.role)) {
+            return true;
+          } else {
+            this.notificationService.alert('UnAuthorized Access', 'You are not authorized for this route.');
+            this.router.navigate([this.location.path()]);
+            return false;
+          }
 
         }
       }

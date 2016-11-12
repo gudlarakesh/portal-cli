@@ -18,9 +18,9 @@ export class HomeGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let currentUser: User = this.currentUserService.getCurrentUser();
 
-    // if(currentUser.roles.includes('member')) {
-    //   this.router.navigate(['/tasks']);
-    // }
+    if(currentUser.roles.includes('member')) {
+      this.router.navigate(['/tasks']);
+    }
     return true;
   }
 }

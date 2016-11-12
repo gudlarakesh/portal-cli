@@ -5,7 +5,7 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
 
 import { AuthHttpService } from '../../shared/services/index';
 import { Task, SubmittedTask } from '../models/index';
@@ -58,8 +58,7 @@ export class StudentTaskService {
 
   extendSubmittedTask(task:Task):Task {
     let newTask:Task;
-    // newTask = _.find(this.allTasks.getValue(), o => o.id === task.relationships.organization_curriculum_task.id);
-    newTask = new Task();
+    newTask = _.find(this.allTasks.getValue(), o => o.id === task.relationships.organization_curriculum_task.id);
     newTask.attributes.status = task.attributes.status;
     newTask.attributes.isDone = true;
     newTask.submissionId = task.id;
@@ -132,8 +131,7 @@ export class StudentTaskService {
     let questions: Question[] = task.relationships.questions.data.map((obj: any) => {
         let retObj = {id: obj.id, text: obj.attributes.text, answer_type: obj.attributes.answer_type};
         if (obj.relationships && obj.relationships.answer) {
-          // _.assign(retObj,{answerId: obj.relationships.answer.id, answer: obj.relationships.answer.attributes.text});
-          retObj = Object.assign({},{id: obj.relationships.answer.id, text: obj.relationships.answer.attributes.text, answer_type: 'a'} )
+          _.assign(retObj,{answerId: obj.relationships.answer.id, answer: obj.relationships.answer.attributes.text});
         }
         return retObj;
       });
@@ -141,8 +139,7 @@ export class StudentTaskService {
     this.questions.next(questions);
     if (task.relationships.submission_task) {
       detailData.submissionId = task.relationships.submission_task.id;
-      // let submittedTask = _.find(this.submittedTasks.getValue(), o => o.submissionId === detailData.submissionId);
-      let submittedTask:Task  = new Task();
+      let submittedTask = _.find(this.submittedTasks.getValue(), o => o.submissionId === detailData.submissionId);
       detailData['status'] = submittedTask.attributes.status;
     }
     return detailData;
