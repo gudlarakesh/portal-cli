@@ -7,7 +7,7 @@
           <md-card>
            <md-card-content>
               <h2>{{task.attributes.title}}</h2>
-              <p>{{task.attributes.description}}</p>
+              <ca-markdown-viewer [mdText]="task.attributes.description"></ca-markdown-viewer>
            </md-card-content>
            <md-card-content>
             <ca-task-questions [canAddQuestion]="canAddQuestion"

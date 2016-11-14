@@ -40,12 +40,11 @@ li {
 }
 
 .navbar-header {
-  margin-left: 50%;
+  margin-left: 50% !important;
   transform: translateX(-50%);
-  text-transform: uppercase;
   font-weight: bold;
   .navbar-brand {
-    color: #009688;
+    color: #009688 !important;
   }
 }
 
