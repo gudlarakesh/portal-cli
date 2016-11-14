@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" id="student-task-detail">
   <md-card>
     <md-tab-group>
       <md-tab>
@@ -7,14 +7,14 @@
           <md-card>
            <md-card-content>
               <h2>{{task.attributes.title}}</h2>
-              <p>{{task.attributes.description}}</p>
+              <ca-markdown-viewer [mdText]="task.attributes.description"></ca-markdown-viewer>
            </md-card-content>
            <md-card-content>
             <ca-task-questions [canAddQuestion]="canAddQuestion"
             [questions]="taskService.questionObs | async"
             (saveQuestion)=submitResponse($event)>
             </ca-task-questions>
-           </md-card-content>           
+           </md-card-content>
           </md-card>
         </template>
       </md-tab>
@@ -22,5 +22,6 @@
     <div>
       <button md-raised-button color="primary" [disabled]="!allAnswersSubmitted" *ngIf="task.status == 'rejected' || !task.submissionId" (click)="markComplete()">Submit For Review</button>
     </div>
+    <ca-disqus *ngIf="task.submissionId" [identifier]="task.submissionId" [shortname]="'srikanth-test-com.disqus.com'"></ca-disqus>
   </md-card>
 </div>
