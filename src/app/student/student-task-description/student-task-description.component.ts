@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NotificationsService } from 'angular2-notifications';
@@ -8,7 +8,9 @@ import { StudentTaskService } from '../services/index' ;
 
 @Component({
   selector: 'ca-student-task-description',
-  templateUrl: './student-task-description.component.html'
+  templateUrl: './student-task-description.component.html',
+  styleUrls: ['student-task-description.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class StudentTaskDescriptionComponent implements OnInit {

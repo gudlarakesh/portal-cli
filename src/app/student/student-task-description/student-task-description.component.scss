@@ -1,0 +1,18 @@
+#student-task-detail {
+  .question-edit {
+    font-size: 1.2em;
+    color: #3498db;
+    visibility: hidden;
+  }
+  md-card:hover {
+    .question-edit {
+      visibility: visible;
+    }
+  }
+  .task-form-clear,.question-form-clear {
+    color: #e74c3c;
+  }
+  .submit-button{
+    height: 40px;
+  }
+}

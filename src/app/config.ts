@@ -9,6 +9,6 @@ CONFIG.dev = {
     };
 } else {
   CONFIG.dev = {
-    apiUrl: 'https://ca-vision.herokuapp.com/v1-beta'
+    apiUrl: 'http://localhost:3000/v1-beta'
   };
 }
