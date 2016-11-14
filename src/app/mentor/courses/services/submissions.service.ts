@@ -70,6 +70,7 @@ export class SubmissionsService {
     };
     submission['task_id'] = obj.relationships.organization_curriculum_task.id;
     submission['user_id'] = obj.relationships.user.id;
+    submission['user_email'] = obj.relationships.user.email;
     submission['status_changed_by_id'] = obj.relationships.status_changed_by_id.id;
 
     return submission;

@@ -2,7 +2,7 @@
   <div class="panel-heading" role="tab" id="headingTwo">
     <h4 class="panel-title">
       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#collapse_' + submission.id" aria-expanded="false">
-        <h4>User Id: {{submission.user_id}} <span class="pull-right" [title]="submission.status_changed_on">{{submission.status_changed_on | amTimeAgo}}</span>
+        <h4>User Id: {{submission.user_email}} <span class="pull-right" [title]="submission.status_changed_on">{{submission.status_changed_on | amTimeAgo}}</span>
         </h4>
       </a>
     </h4>
