@@ -31,7 +31,7 @@
       <button class="pull-right btn btn-primary btn-default" (click)="approveSubmission()" *ngIf="submission.status === 'submitted' || submission.status === 'rejected'">Approve</button>
       <button class="pull-right btn btn-danger btn-default" (click)="rejectSubmission()" *ngIf="submission.status === 'submitted' || submission.status === 'accepted'">Reject</button>
     </div>
-    <!-- <ca-disqus [identifier]="submission.id" [shortname]="'srikanth-test-com.disqus.com'"></ca-disqus> -->
+    <ca-disqus [identifier]="submission.id" [shortname]="'srikanth-test-com.disqus.com'"></ca-disqus>
   </div>
 
 </div>
