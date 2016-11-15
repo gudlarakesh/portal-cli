@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl: '/portal-cli',
+  baseUrl: '/',
   apiUrl: 'https://'
 };
