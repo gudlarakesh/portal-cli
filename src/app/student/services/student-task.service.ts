@@ -65,7 +65,7 @@ export class StudentTaskService {
     return newTask;
   }
 
-  postSubmitTask(submitTask: Task): Observable<any> {
+  submitTask(submitTask: Task): Observable<any> {
     let addSubmitTaskUrl: string = `${this.config.dev.apiUrl}/submission/tasks`;
     let body = {data: {relationships : {organization_curriculum_task :{ id: submitTask.id}}}};
     let bodyString = JSON.stringify(body); // Stringify payload
@@ -76,6 +76,28 @@ export class StudentTaskService {
       let submittedTask:Task = this.extendSubmittedTask(res.json().data);
       this.allTasks.next(this.allTasks.getValue().concat(submittedTask));
       return res.json().data;
+    })
+    .catch(this.handleError);
+  }
+
+  resubmitTask(submitTask: Task): Observable<any> {
+    let submitTaskUrl: string = `${this.config.dev.apiUrl}/submission/tasks/${submitTask.submissionId}`;
+    let body = {data: {relationships : {organization_curriculum_task : { id: submitTask.id}}, attributes: {status: 'submitted' } }};
+    let bodyString = JSON.stringify(body); // Stringify payload
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    return this.apiService.patch(submitTaskUrl, bodyString, options) // ...using post request
+    .map((res:Response) => {
+      let submittedTask:Task = this.extendSubmittedTask(res.json().data);
+      this.allTasks.next(this.allTasks.getValue().map((oldTask) => {
+        if (oldTask.id === submittedTask.id) {
+          submittedTask.attributes.status = 'submitted';
+          return submittedTask;
+        } else {
+          return oldTask;
+        }
+      }));
+      // return res.json().data;
     })
     .catch(this.handleError);
   }
