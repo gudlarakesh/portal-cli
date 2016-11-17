@@ -6,7 +6,8 @@ import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'ca-signup',
-  templateUrl: 'signup.component.html'
+  templateUrl: 'signup.component.html',
+  styleUrls: ['login.component.css']
 })
 
 export class SignupComponent {

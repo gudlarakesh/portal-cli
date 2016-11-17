@@ -9,8 +9,8 @@
           <div md-raised color="warn" class="trash pull-right" (click)="deleteCohort(cohort.id)">
             <i class="material-icons">delete</i>
           </div>
-          <md-card-subtitle>2016 Batch</md-card-subtitle>
-          <md-card-title id="{{cohort.id}}" contenteditable="true" ngDefaultControl [(ngModel)]="updatedCohortName" name="title" (keypress)="updateCohort($event.keyCode,cohort.id)">{{cohort.title}}</md-card-title>   
+          <md-card-subtitle>{{year}} Batch</md-card-subtitle>
+          <md-card-title id="{{cohort.id}}" contenteditable="true" ngDefaultControl [(ngModel)]="updatedCohortName" name="title" (keypress)="updateCohort($event.keyCode,cohort.id)">{{cohort.title}}</md-card-title>
           <md-card-content>
             <p>This course is a very practical way to learn web development JavaScript</p>
           </md-card-content>

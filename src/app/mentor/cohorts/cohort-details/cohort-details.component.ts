@@ -43,7 +43,6 @@ export class CohortDetailsComponent implements OnInit {
       this.allUsersWithOutRoles = this.allUsers
       .filter(user => user.roles.length === 0)
       .map(user => user.email)
-      console.log(this.allUsersWithOutRoles);
       this.allUsersWithRoles = this.allUsers
       .filter(user => user.roles.length > 0)
       .map(user => user.email)

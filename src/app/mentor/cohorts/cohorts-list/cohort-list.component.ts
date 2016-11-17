@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import * as moment from 'moment';
 import { NotificationsService } from 'angular2-notifications';
 declare var jQuery:any;
 
@@ -14,6 +14,7 @@ import { CohortListService } from '../services/index';
 })
 
 export class CohortListComponent implements OnInit {
+  year: any = moment().year();
   allCohorts: Cohort[];
   newCohortName: string;
   updatedCohortName: string;

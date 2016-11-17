@@ -10,7 +10,7 @@ import { SubmissionsService } from '../../services/submissions.service';
 export class TaskSubmissionsComponent implements OnChanges {
   @Input() taskId: number;
   submissions: any[] = [];
-  statusFilter:string = 'submitted';
+  statusFilter: string = 'submitted';
   questions: Question[];
 
   constructor(private submissionsService: SubmissionsService) {}
