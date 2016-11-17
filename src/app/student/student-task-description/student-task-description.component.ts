@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 import { NotificationsService } from 'angular2-notifications';
 
@@ -19,7 +19,7 @@ export class StudentTaskDescriptionComponent implements OnInit {
   allAnswersSubmitted: boolean = false;
   task:Task;
   questions: any;
-  constructor(private taskService: StudentTaskService,
+  constructor(private taskService: StudentTaskService, private router: Router,
    private activatedRoute: ActivatedRoute, private notificationService: NotificationsService) {
   }
 
@@ -43,10 +43,23 @@ export class StudentTaskDescriptionComponent implements OnInit {
   }
 
   markComplete() {
-    this.taskService.postSubmitTask(this.task).subscribe(task => {
-      this.task.submissionId = task.id;
-      this.task.attributes.isDone = true;
-    });
+    if (this.task.submissionId) {
+      this.taskService.resubmitTask(this.task).subscribe(task => {
+        this.task.attributes.isDone = true;
+      });
+    } else {
+      this.taskService.submitTask(this.task).subscribe(task => {
+        this.task.submissionId = task.id;
+        this.task.attributes.isDone = true;
+      });
+    }
+    // Navigate to the Under Review Tab once marked as completed
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'type': 2},
+    };
+    this.router.navigate(['/tasks'], navigationExtras);
+    this.notificationService.success('Nice Job !!',
+         `Submitted the task for review`);
   }
 
 
